@@ -1,22 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Casa Rodica">
   <circle cx="50" cy="50" r="49" fill="#F6F1E7"/>
   <circle cx="50" cy="50" r="47" fill="none" stroke="#2F4733" stroke-width="3"/>
-  <g fill="#E2B6C6">
-    <ellipse cx="50" cy="27" rx="9" ry="22" transform="rotate(0 50 50)"/>
-    <ellipse cx="50" cy="27" rx="9" ry="22" transform="rotate(60 50 50)"/>
-    <ellipse cx="50" cy="27" rx="9" ry="22" transform="rotate(120 50 50)"/>
-    <ellipse cx="50" cy="27" rx="9" ry="22" transform="rotate(180 50 50)"/>
-    <ellipse cx="50" cy="27" rx="9" ry="22" transform="rotate(240 50 50)"/>
-    <ellipse cx="50" cy="27" rx="9" ry="22" transform="rotate(300 50 50)"/>
+  <g transform="translate(50 50) scale(0.52) translate(-100 -100)">
+    <g fill="#e6bccb">
+      <ellipse cx="100" cy="63.5" rx="19" ry="44" transform="rotate(0 100 100)"/>
+      <ellipse cx="100" cy="63.5" rx="19" ry="44" transform="rotate(60 100 100)"/>
+      <ellipse cx="100" cy="63.5" rx="19" ry="44" transform="rotate(120 100 100)"/>
+      <ellipse cx="100" cy="63.5" rx="19" ry="44" transform="rotate(180 100 100)"/>
+      <ellipse cx="100" cy="63.5" rx="19" ry="44" transform="rotate(240 100 100)"/>
+      <ellipse cx="100" cy="63.5" rx="19" ry="44" transform="rotate(300 100 100)"/>
+    </g>
+    <g fill="#C4677B">
+      <ellipse cx="100" cy="76" rx="17" ry="31.5" transform="rotate(30 100 100)"/>
+      <ellipse cx="100" cy="76" rx="17" ry="31.5" transform="rotate(90 100 100)"/>
+      <ellipse cx="100" cy="76" rx="17" ry="31.5" transform="rotate(150 100 100)"/>
+      <ellipse cx="100" cy="76" rx="17" ry="31.5" transform="rotate(210 100 100)"/>
+      <ellipse cx="100" cy="76" rx="17" ry="31.5" transform="rotate(270 100 100)"/>
+      <ellipse cx="100" cy="76" rx="17" ry="31.5" transform="rotate(330 100 100)"/>
+    </g>
+    <circle cx="100" cy="100" r="12" fill="#C9A24B"/>
+    <circle cx="100" cy="100" r="5.5" fill="#2F4733"/>
   </g>
-  <g fill="#C4677B">
-    <ellipse cx="50" cy="32" rx="12" ry="17" transform="rotate(30 50 50)"/>
-    <ellipse cx="50" cy="32" rx="12" ry="17" transform="rotate(90 50 50)"/>
-    <ellipse cx="50" cy="32" rx="12" ry="17" transform="rotate(150 50 50)"/>
-    <ellipse cx="50" cy="32" rx="12" ry="17" transform="rotate(210 50 50)"/>
-    <ellipse cx="50" cy="32" rx="12" ry="17" transform="rotate(270 50 50)"/>
-    <ellipse cx="50" cy="32" rx="12" ry="17" transform="rotate(330 50 50)"/>
-  </g>
-  <circle cx="50" cy="50" r="10.5" fill="#C9A24B"/>
-  <circle cx="50" cy="50" r="4.2" fill="#2F4733"/>
 </svg>
