@@ -145,11 +145,11 @@ section{position:relative}
 .bookbar .val{font-family:var(--font-head);font-weight:600;font-size:1.02rem;color:var(--navy)}
 .bookbar .field + .field{border-left:1px solid rgba(201,162,75,.3);padding-left:1rem}
 @media(max-width:820px){.bookbar{grid-template-columns:1fr 1fr;margin-top:-30px;align-items:stretch}
-  .bookbar .field + .field{border-left:0}.bookbar .btn{grid-column:1/-1}
-  .bookbar .field{border:1.5px solid var(--line-gold);border-radius:12px;padding:.6rem .7rem;background:#fff;justify-content:center;min-height:70px;min-width:0}
+  .bookbar .field + .field{border-left:1.5px solid var(--line-gold);padding-left:.7rem}.bookbar .btn{grid-column:1/-1}
+  .bookbar .field{position:relative;border:1.5px solid var(--line-gold);border-radius:12px;padding:.6rem .7rem;background:#fff;justify-content:center;min-height:70px;min-width:0}
   .bookbar .field:nth-child(3){grid-column:1/-1}
   .bookbar input,.bookbar select{min-height:1.5em;min-width:0}
-  .bookbar input::-webkit-calendar-picker-indicator{opacity:1;margin-left:auto}}
+  .bookbar input[type=date]::-webkit-calendar-picker-indicator{position:absolute;top:.6rem;right:.7rem;margin:0;opacity:.7}}
 
 /* --- generic cards / grids --- */
 .grid{display:grid;gap:clamp(18px,2.4vw,30px)}
