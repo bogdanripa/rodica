@@ -3,8 +3,8 @@
   <circle cx="100" cy="100" r="94" fill="none" stroke="#2F4733" stroke-width="3"/>
   <circle cx="100" cy="100" r="86" fill="none" stroke="#C9A24B" stroke-width="1.5"/>
   <g fill="#2F4733">
-    <path d="M-22 0 Q0 -8 22 0 Q0 8 -22 0 Z" transform="translate(54 152) rotate(-18)"/>
-    <path d="M-22 0 Q0 -8 22 0 Q0 8 -22 0 Z" transform="translate(146 152) rotate(18)"/>
+    <path d="M-21 0 Q0 -7 21 0 Q0 7 -21 0 Z" transform="translate(66 156) rotate(-16)"/>
+    <path d="M-21 0 Q0 -7 21 0 Q0 7 -21 0 Z" transform="translate(134 156) rotate(16)"/>
   </g>
   <g fill="#E2B6C6">
     <ellipse cx="100" cy="70" rx="13" ry="33" transform="rotate(0 100 100)"/>
