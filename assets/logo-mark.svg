@@ -2,10 +2,6 @@
   <circle cx="100" cy="100" r="99" fill="#F6F1E7"/>
   <circle cx="100" cy="100" r="94" fill="none" stroke="#2F4733" stroke-width="3"/>
   <circle cx="100" cy="100" r="86" fill="none" stroke="#C9A24B" stroke-width="1.5"/>
-  <g fill="#2F4733">
-    <path d="M-25 0 Q0 -10 25 0 Q0 10 -25 0 Z" transform="translate(26 134) rotate(2)"/>
-    <path d="M-25 0 Q0 -10 25 0 Q0 10 -25 0 Z" transform="translate(174 134) rotate(-2)"/>
-  </g>
   <g fill="#e6bccb">
     <ellipse cx="100" cy="63.5" rx="19" ry="44" transform="rotate(0 100 100)"/>
     <ellipse cx="100" cy="63.5" rx="19" ry="44" transform="rotate(60 100 100)"/>
@@ -24,4 +20,8 @@
   </g>
   <circle cx="100" cy="100" r="12" fill="#C9A24B"/>
   <circle cx="100" cy="100" r="5.5" fill="#2F4733"/>
+  <g fill="#2F4733">
+    <path d="M-25 0 Q0 -10 25 0 Q0 10 -25 0 Z" transform="translate(26 134) rotate(2)"/>
+    <path d="M-25 0 Q0 -10 25 0 Q0 10 -25 0 Z" transform="translate(174 134) rotate(-2)"/>
+  </g>
 </svg>
