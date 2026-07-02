@@ -103,6 +103,7 @@ section{position:relative}
     display:none;overflow:auto;max-height:80vh;box-shadow:var(--shadow-sm)}
   .nav-links a{display:block;padding:.95rem 0;border-bottom:1px solid rgba(201,162,75,.2);font-size:1.05rem}
   .nav-links a::after{display:none}
+  .nav-links a.active{font-weight:600;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:5px}
   .nav-check:checked ~ .nav-links{display:flex}
 }
 
