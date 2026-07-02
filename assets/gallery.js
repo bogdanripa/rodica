@@ -1,0 +1,105 @@
+/* Casa Rodica — shared gallery lightbox.
+   Opens images in place (any page), navigates within the clicked photo's category,
+   loops within it, and closes back to where you were. Falls back to gallery
+   navigation if this script doesn't run. */
+(function () {
+  var items = window.RODICA_GALLERY || [];
+  if (!items.length) return;
+
+  var byName = {};
+  items.forEach(function (it, i) {
+    byName[it.file.replace(/\.jpg$/, '')] = i;
+    byName[it.file] = i;
+  });
+
+  function bounds(i) {
+    var g = items[i].g, s = i, e = i;
+    while (s > 0 && items[s - 1].g === g) s--;
+    while (e < items.length - 1 && items[e + 1].g === g) e++;
+    return [s, e];
+  }
+
+  var lb = document.createElement('div');
+  lb.className = 'lb';
+  lb.setAttribute('role', 'dialog');
+  lb.setAttribute('aria-modal', 'true');
+  lb.setAttribute('aria-label', 'Galerie foto Casa Rodica');
+  lb.innerHTML =
+    '<button class="lb-close" type="button" aria-label="Închide">×</button>' +
+    '<button class="lb-btn lb-prev" type="button" aria-label="Imaginea anterioară"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>' +
+    '<div class="lb-stage"><img alt=""></div>' +
+    '<button class="lb-btn lb-next" type="button" aria-label="Imaginea următoare"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>' +
+    '<div class="lb-cap"><span class="lb-capname"></span><span class="n lb-num"></span></div>';
+  document.body.appendChild(lb);
+
+  var img = lb.querySelector('.lb-stage img');
+  var capn = lb.querySelector('.lb-capname');
+  var num = lb.querySelector('.lb-num');
+  var cur = 0, gs = 0, ge = 0;
+
+  function render() {
+    var it = items[cur];
+    img.src = 'assets/images/' + it.file;
+    img.alt = it.alt;
+    capn.textContent = it.g;
+    num.textContent = (cur - gs + 1) + ' / ' + (ge - gs + 1);
+  }
+  function step(d) {
+    cur += d;
+    if (cur > ge) cur = gs;
+    else if (cur < gs) cur = ge;
+    render();
+  }
+  function open(i) {
+    cur = i;
+    var b = bounds(i); gs = b[0]; ge = b[1];
+    render();
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  lb.querySelector('.lb-close').addEventListener('click', close);
+  lb.querySelector('.lb-prev').addEventListener('click', function () { step(-1); });
+  lb.querySelector('.lb-next').addEventListener('click', function () { step(1); });
+  lb.addEventListener('click', function (e) {
+    if (e.target === lb || e.target.classList.contains('lb-stage')) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') step(-1);
+    else if (e.key === 'ArrowRight') step(1);
+  });
+
+  function nameFor(el) {
+    var href = el.getAttribute && el.getAttribute('href');
+    if (href && href.indexOf('#') >= 0) return decodeURIComponent(href.split('#')[1]);
+    var im = el.querySelector && el.querySelector('img');
+    if (im) return im.getAttribute('src').split('/').pop().replace(/\.jpg$/, '');
+    return null;
+  }
+
+  // Intercept clicks on inline image links (any page) and gallery thumbs.
+  document.querySelectorAll('a.imglink, .gthumb').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      var idx = byName[nameFor(el)];
+      if (idx == null) return; // fall back to default (navigate) if unknown
+      e.preventDefault();
+      open(idx);
+    });
+  });
+
+  // Direct URL deep-link (e.g. galerie.html#foisor-11 opened in a new tab).
+  function fromHash() {
+    var h = decodeURIComponent(location.hash.slice(1));
+    if (!h) return;
+    var idx = byName[h];
+    if (idx != null) open(idx);
+  }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+})();

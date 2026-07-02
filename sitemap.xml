@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://pensiunebreaza.ro/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://pensiunebreaza.ro/vila.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://pensiunebreaza.ro/activitati.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pensiunebreaza.ro/tarife.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://pensiunebreaza.ro/povestea-noastra.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pensiunebreaza.ro/galerie.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pensiunebreaza.ro/ghid-local.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pensiunebreaza.ro/ghid-trasee-bucegi.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pensiunebreaza.ro/ghid-schi-sinaia-predeal.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pensiunebreaza.ro/ghid-golf-breaza.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pensiunebreaza.ro/ghid-manastirea-breaza.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pensiunebreaza.ro/ghid-colegiul-militar.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pensiunebreaza.ro/ghid-restaurante-magazine.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pensiunebreaza.ro/intrebari-frecvente.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pensiunebreaza.ro/contact.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+</urlset>
