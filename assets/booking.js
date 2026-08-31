@@ -1,30 +1,16 @@
-/* Casa Rodica — booking bar with stay rules + placeholder submit.
+/* Casa Rodica — booking bar with stay rules + Hoteliera reservation redirect.
    Ideal: Fri→Mon (weekend), Mon→Fri, 7+ nights.
    OK (mid-week): Mon→Wed, Mon→Thu, Tue→Thu. Min 2 nights.
-   Submit is a stub until the reservation engine (Hoteliera) is wired in. */
+   Submit sends the guest to the Hoteliera engine with the selected dates. */
 (function () {
+  var RES_URL = 'https://guest.hoteliera.com/new-reservation?o=ro-vila-r-hqh4&location=vila-r-hqh4&lang=ro';
   function iso(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
   function nightsTxt(n) { return n + ' ' + (n === 1 ? 'noapte' : 'nopți'); }
 
-  function popup() {
-    var ov = document.createElement('div');
-    ov.setAttribute('role', 'dialog');
-    ov.setAttribute('aria-modal', 'true');
-    ov.style.cssText = 'position:fixed;inset:0;z-index:300;background:rgba(20,26,31,.6);display:flex;align-items:center;justify-content:center;padding:1.2rem';
-    ov.innerHTML =
-      '<div style="background:#F6F1E7;border:1px solid rgba(201,162,75,.5);border-radius:18px;max-width:400px;width:100%;padding:2rem 1.8rem;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,.35);font-family:Poppins,system-ui,sans-serif">' +
-        '<div style="width:52px;height:52px;margin:0 auto 1rem;border-radius:50%;border:1.6px solid #C9A24B;display:flex;align-items:center;justify-content:center">' +
-          '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#2F4733" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg></div>' +
-        '<h3 style="margin:0 0 .4rem;font-size:1.25rem;color:#22303A">Not implemented</h3>' +
-        '<p style="margin:0 0 1.4rem;font-family:Lato,system-ui,sans-serif;color:rgba(34,48,58,.62);font-size:.95rem">Rezervarea online va fi disponibilă în curând, odată cu integrarea sistemului nostru de rezervări.</p>' +
-        '<button type="button" style="font-family:Poppins,system-ui,sans-serif;font-weight:600;background:#3FA34D;color:#fff;border:0;border-radius:999px;padding:.7rem 1.8rem;cursor:pointer">Am înțeles</button>' +
-      '</div>';
-    function close() { ov.remove(); document.removeEventListener('keydown', onKey); }
-    function onKey(e) { if (e.key === 'Escape') close(); }
-    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
-    ov.querySelector('button').addEventListener('click', close);
-    document.addEventListener('keydown', onKey);
-    document.body.appendChild(ov);
+  function reserveUrl(ci, co) {
+    var url = RES_URL;
+    if (ci && co) url += '&day_from=' + encodeURIComponent(ci) + '&day_to=' + encodeURIComponent(co);
+    return url;
   }
 
   document.querySelectorAll('form.bookbar[data-booking]').forEach(function (form) {
@@ -69,7 +55,12 @@
     ci.addEventListener('change', update);
     co.addEventListener('change', update);
     if (g) g.addEventListener('change', update);
-    cta.addEventListener('click', function (e) { e.preventDefault(); popup(); });
+    cta.addEventListener('click', function (e) {
+      e.preventDefault();
+      var r = classify();
+      if (r.k === 'bad' || r.k === 'min') { update(); (ci.value ? co : ci).focus(); return; }
+      window.location.href = reserveUrl(ci.value, co.value);
+    });
     update();
   });
 })();
