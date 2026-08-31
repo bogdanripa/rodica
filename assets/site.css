@@ -183,6 +183,8 @@ section{position:relative}
 /* --- color-block bands (Concept 2) --- */
 .band-green{background:var(--orchard);color:#F3EFE4}
 .band-green h2,.band-green h3{color:#fff}
+.band-green .card h3{color:var(--navy)}
+.band-green>.wrap>.center .lede,.band-green>.wrap>.lede{color:rgba(243,239,228,.85)}
 .band-green .eyebrow{color:var(--sun)}
 .band-green .eyebrow::before{background:var(--sun)}
 .band-blue{background:var(--blue);color:#eaf6fb}

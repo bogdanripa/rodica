@@ -1,0 +1,46 @@
+/* Casa Alinka — theme overrides on top of the shared site.css.
+   Palette & fonts taken from the Casa Alinka logo/identity (hobbit door).
+   Personality: storybook (Hobbit) + celebration (Petrecere) energy. */
+:root{
+  --cream:#F7EFE3;         /* warm cream (bg) */
+  --navy:#2E2A25;          /* warm dark ink (body text) */
+  --orchard:#2E5B45;       /* forest green — brand blocks, bands */
+  --green:#B0472F;         /* terracotta — primary CTA (repurposed) */
+  --blue:#6E8E4E;          /* leaf green — secondary CTA (repurposed) */
+  --gold:#B0813C;          /* bronze-gold — fine details, lines */
+  --sun:#D9862A;           /* warm amber — hero eyebrow accent */
+  --coral:#B0472F;         /* terracotta accent */
+  --ink-60:rgba(46,42,37,.64);
+  --ink-40:rgba(46,42,37,.42);
+  --line-gold:rgba(176,129,60,.55);
+  --rust:#B0472F;
+
+  --font-head:'Fraunces',Georgia,serif;      /* storybook serif — headings + brand */
+  --font-serif:'Cormorant Garamond',Georgia,serif;
+  --font-script:'Dancing Script',cursive;    /* the tagline flourish */
+}
+
+/* headings in the warm ink, brand wordmark in the storybook serif */
+h1,h2,h3,h4{letter-spacing:0}
+.brand{font-family:var(--font-head);font-weight:600;letter-spacing:0}
+.brand small{color:var(--gold)}
+
+/* the Alinka logo mark is a landscape hobbit-door emblem — give it room */
+.brand .mark{width:auto;height:52px;flex:0 0 auto;place-items:center}
+
+/* footer: emblem stacked above the wordmark, left-aligned (not floating) */
+.footer-brand .brand{display:flex;flex-direction:column;align-items:flex-start;gap:.55rem}
+.footer-brand .brand .mark{width:auto;height:58px;place-items:start}
+.footer-brand .brand .mark img{height:58px;width:auto}
+.brand .mark img{height:52px;width:auto}
+@media(max-width:1060px){.brand .mark{height:46px}.brand .mark img{height:46px}}
+
+/* hero tagline & serif accents rendered in the script hand */
+.hero .tagline,.serif{font-family:var(--font-script)!important;font-style:normal;font-weight:600;color:#F6E4C4}
+.eyebrow{color:var(--gold)}
+
+/* warm primary button shadow to match terracotta */
+.btn-primary{box-shadow:0 12px 26px -14px rgba(176,71,47,.9)}
+.btn-blue{box-shadow:0 12px 26px -14px rgba(110,142,78,.9)}
+
+/* active nav underline in bronze already via --gold; keep */

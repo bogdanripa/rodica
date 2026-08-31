@@ -1,19 +1,20 @@
-/* Casa Rodica — booking bar with stay rules + Hoteliera reservation redirect.
+/* Shared booking bar (Casa Rodica + Casa Alinka) — stay rules + Hoteliera redirect.
+   Each page's <form class="bookbar"> sets its own engine via data-reserve-url.
    Ideal: Fri→Mon (weekend), Mon→Fri, 7+ nights.
-   OK (mid-week): Mon→Wed, Mon→Thu, Tue→Thu. Min 2 nights.
-   Submit sends the guest to the Hoteliera engine with the selected dates. */
+   OK (mid-week): Mon→Wed, Mon→Thu, Tue→Thu. Min 2 nights. */
 (function () {
-  var RES_URL = 'https://guest.hoteliera.com/new-reservation?o=ro-vila-r-hqh4&location=vila-r-hqh4&lang=ro';
+  var RES_DEFAULT = 'https://guest.hoteliera.com/new-reservation?o=ro-vila-r-hqh4&location=vila-r-hqh4&lang=ro';
   function iso(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
   function nightsTxt(n) { return n + ' ' + (n === 1 ? 'noapte' : 'nopți'); }
 
-  function reserveUrl(ci, co) {
-    var url = RES_URL;
-    if (ci && co) url += '&day_from=' + encodeURIComponent(ci) + '&day_to=' + encodeURIComponent(co);
+  function reserveUrl(base, ci, co) {
+    var url = base;
+    if (ci && co) url += (base.indexOf('?') >= 0 ? '&' : '?') + 'day_from=' + encodeURIComponent(ci) + '&day_to=' + encodeURIComponent(co);
     return url;
   }
 
   document.querySelectorAll('form.bookbar[data-booking]').forEach(function (form) {
+    var RES_URL = form.getAttribute('data-reserve-url') || RES_DEFAULT;
     var ci = form.querySelector('input[name=ci]');
     var co = form.querySelector('input[name=co]');
     var g = form.querySelector('select[name=g]');
@@ -59,7 +60,7 @@
       e.preventDefault();
       var r = classify();
       if (r.k === 'bad' || r.k === 'min') { update(); (ci.value ? co : ci).focus(); return; }
-      window.location.href = reserveUrl(ci.value, co.value);
+      window.location.href = reserveUrl(RES_URL, ci.value, co.value);
     });
     update();
   });
